@@ -1,0 +1,40 @@
+query RunInput {
+  cart {
+    cost{
+      totalAmount{
+        amount
+      }
+    }
+    lines {
+      quantity
+      cost{
+        totalAmount{
+          amount
+        }
+      }
+      id
+      merchandise {
+        ... on ProductVariant {
+          id,
+          product {
+            handle,
+            hasTags(tags: ["FreeGift", "Sample"]) {
+              tag
+              hasTag
+            },
+            productType,                        
+            gwp_threshold: metafield(key: "gwp_threshold", namespace: "custom") {
+              value
+            },
+            gwp_tier: metafield(key: "gwp_tier_name", namespace: "custom") {
+              value
+            },
+            gwp_tier_amount: metafield(key: "gwp_tier_max_amount", namespace: "custom") {
+              value
+            }
+          }          
+        }
+      }
+    }
+  }
+}

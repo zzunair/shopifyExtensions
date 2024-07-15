@@ -1,0 +1,29 @@
+query RunInput {
+  cart {
+    lines {
+      cost{
+        amountPerQuantity{
+          amount
+        },
+        compareAtAmountPerQuantity{
+          amount
+        }
+      },
+      merchandise {
+        ...on ProductVariant {
+            id,
+            product {
+              productType,
+              isGiftCard
+            }     
+
+
+        }
+      }
+    },
+    buyerIdentity{
+      email
+    } 
+  }  
+ 
+}
